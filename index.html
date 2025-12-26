@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire de Contact - Validation</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-envelope"></i> Contactez-nous</h1>
+            <p>Envoyez-nous un message et nous vous répondrons dans les plus brefs délais</p>
+        </header>
+
+        <div class="contact-container">
+            <div class="contact-form-section">
+                <form id="contactForm" class="contact-form" novalidate>
+                    <!-- Informations personnelles -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-user"></i> Informations personnelles</h3>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">
+                                    <i class="fas fa-user"></i> Prénom *
+                                </label>
+                                <input
+                                    type="text"
+                                    id="firstName"
+                                    name="firstName"
+                                    placeholder="Votre prénom"
+                                    required
+                                    maxlength="50"
+                                    autocomplete="given-name"
+                                >
+                                <div class="error-message" id="firstNameError"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="lastName">
+                                    <i class="fas fa-user"></i> Nom *
+                                </label>
+                                <input
+                                    type="text"
+                                    id="lastName"
+                                    name="lastName"
+                                    placeholder="Votre nom"
+                                    required
+                                    maxlength="50"
+                                    autocomplete="family-name"
+                                >
+                                <div class="error-message" id="lastNameError"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">
+                                <i class="fas fa-envelope"></i> Email *
+                            </label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="votre.email@exemple.com"
+                                required
+                                autocomplete="email"
+                            >
+                            <div class="error-message" id="emailError"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">
+                                <i class="fas fa-phone"></i> Téléphone
+                            </label>
+                            <input
+                                type="tel"
+                                id="phone"
+                                name="phone"
+                                placeholder="+33 6 XX XX XX XX"
+                                autocomplete="tel"
+                            >
+                            <div class="error-message" id="phoneError"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="company">
+                                <i class="fas fa-building"></i> Société
+                            </label>
+                            <input
+                                type="text"
+                                id="company"
+                                name="company"
+                                placeholder="Nom de votre société"
+                                maxlength="100"
+                                autocomplete="organization"
+                            >
+                            <div class="error-message" id="companyError"></div>
+                        </div>
+                    </div>
+
+                    <!-- Détails du message -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-comment"></i> Votre message</h3>
+
+                        <div class="form-group">
+                            <label for="subject">
+                                <i class="fas fa-tag"></i> Sujet *
+                            </label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Choisissez un sujet</option>
+                                <option value="information">Demande d'information</option>
+                                <option value="support">Support technique</option>
+                                <option value="partnership">Partenariat</option>
+                                <option value="feedback">Retour d'expérience</option>
+                                <option value="other">Autre</option>
+                            </select>
+                            <div class="error-message" id="subjectError"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="priority">
+                                <i class="fas fa-exclamation-triangle"></i> Priorité
+                            </label>
+                            <div class="priority-options">
+                                <label class="priority-option">
+                                    <input type="radio" name="priority" value="low" checked>
+                                    <span class="priority-label low">Basse</span>
+                                </label>
+                                <label class="priority-option">
+                                    <input type="radio" name="priority" value="medium">
+                                    <span class="priority-label medium">Normale</span>
+                                </label>
+                                <label class="priority-option">
+                                    <input type="radio" name="priority" value="high">
+                                    <span class="priority-label high">Haute</span>
+                                </label>
+                                <label class="priority-option">
+                                    <input type="radio" name="priority" value="urgent">
+                                    <span class="priority-label urgent">Urgent</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">
+                                <i class="fas fa-pencil-alt"></i> Message *
+                            </label>
+                            <textarea
+                                id="message"
+                                name="message"
+                                placeholder="Décrivez votre demande en détail..."
+                                required
+                                rows="6"
+                                maxlength="1000"
+                            ></textarea>
+                            <div class="character-count">
+                                <span id="charCount">0</span>/1000 caractères
+                            </div>
+                            <div class="error-message" id="messageError"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="newsletter" name="newsletter">
+                                <span class="checkmark"></span>
+                                Je souhaite m'abonner à la newsletter
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="privacy" name="privacy" required>
+                                <span class="checkmark"></span>
+                                J'accepte la <a href="#" target="_blank">politique de confidentialité</a> *
+                            </label>
+                            <div class="error-message" id="privacyError"></div>
+                        </div>
+                    </div>
+
+                    <!-- Captcha simple -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-shield-alt"></i> Vérification</h3>
+                        <div class="captcha-container">
+                            <div class="captcha-question" id="captchaQuestion"></div>
+                            <div class="form-group">
+                                <input
+                                    type="text"
+                                    id="captchaAnswer"
+                                    name="captcha"
+                                    placeholder="Votre réponse"
+                                    required
+                                >
+                                <div class="error-message" id="captchaError"></div>
+                            </div>
+                            <button type="button" class="btn btn-secondary" id="refreshCaptcha">
+                                <i class="fas fa-sync-alt"></i> Actualiser
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Boutons d'action -->
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary" id="submitBtn">
+                            <i class="fas fa-paper-plane"></i>
+                            <span>Envoyer le message</span>
+                        </button>
+                        <button type="button" class="btn btn-secondary" id="resetBtn">
+                            <i class="fas fa-undo"></i>
+                            <span>Réinitialiser</span>
+                        </button>
+                        <button type="button" class="btn btn-outline" id="previewBtn">
+                            <i class="fas fa-eye"></i>
+                            <span>Aperçu</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Informations de contact -->
+            <div class="contact-info">
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="info-content">
+                        <h4>Adresse</h4>
+                        <p>123 Rue de la Communication<br>75001 Paris, France</p>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="info-content">
+                        <h4>Téléphone</h4>
+                        <p>+33 1 23 45 67 89</p>
+                        <small>Lun-Ven: 9h-18h</small>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="info-content">
+                        <h4>Email</h4>
+                        <p>contact@exemple.com</p>
+                        <small>Réponse sous 24h</small>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="info-content">
+                        <h4>Heures d'ouverture</h4>
+                        <p>Lundi - Vendredi<br>9h00 - 18h00</p>
+                        <small>Samedi: 10h-16h</small>
+                    </div>
+                </div>
+
+                <div class="social-links">
+                    <h4>Suivez-nous</h4>
+                    <div class="social-icons">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal d'aperçu -->
+        <div id="previewModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Aperçu du message</h3>
+                    <span class="modal-close" id="previewClose">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div id="messagePreview"></div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" id="editMessage">Modifier</button>
+                    <button class="btn btn-primary" id="confirmSend">Confirmer l'envoi</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de succès -->
+        <div id="successModal" class="modal">
+            <div class="modal-content success-modal">
+                <div class="modal-body">
+                    <div class="success-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>Message envoyé !</h3>
+                    <p>Votre message a été envoyé avec succès. Nous vous répondrons dans les plus brefs délais.</p>
+                    <div class="message-details" id="sentMessageDetails"></div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" id="sendAnother">Envoyer un autre message</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Indicateur de chargement -->
+        <div id="loadingIndicator" class="loading-indicator">
+            <div class="spinner"></div>
+            <p>Envoi en cours...</p>
+        </div>
+
+        <!-- Notifications -->
+        <div id="notification" class="notification">
+            <div class="notification-content">
+                <i class="fas fa-info-circle"></i>
+                <span id="notificationText"></span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
